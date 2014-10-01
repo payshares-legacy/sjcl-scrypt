@@ -1,3 +1,5 @@
+var sjcl = require('sjcl');
+
 var scrypt = function(passwd, salt, N, r, p, dkLen) {
 
   function flipEndian(x) {
@@ -166,7 +168,7 @@ var scrypt = function(passwd, salt, N, r, p, dkLen) {
 }
 
 module.exports = {
-  extendSjcl: function(sjcl) {
-    sjcl.misc.scrypt = scrypt;
+  extendSjcl: function(s) {
+    s.misc.scrypt = scrypt;
   }
 };
