@@ -17,7 +17,7 @@ var scrypt = function(passwd, salt, N, r, p, dkLen) {
     if ((N < 2) || (N & (N - 1) != 0)) {
       throw "The parameter N must be a power of 2.";
     }
-    SIZE_MAX = Math.pow(2, 32) - 1;
+    var SIZE_MAX = Math.pow(2, 32) - 1;
     if (N > SIZE_MAX / 128 / r) {
       throw "N too big.";
     }
@@ -27,7 +27,7 @@ var scrypt = function(passwd, salt, N, r, p, dkLen) {
   }
 
   function scrypt(passwd, salt, N, r, p, dkLen) {
-    B = sjcl.misc.pbkdf2(passwd, salt, 1, p * 128 * r * 8);
+    var B = sjcl.misc.pbkdf2(passwd, salt, 1, p * 128 * r * 8);
     var V = [];
     var XY = [];
     for (var i = 0; i < p; i++) {
@@ -117,7 +117,7 @@ var scrypt = function(passwd, salt, N, r, p, dkLen) {
   }
 
   function blockmix_salsa8(BY, Bi, Yi, r) {
-    X = [];
+    var X = [];
     var i;
 
     blockcopy(BY, Bi + (2 * r - 1) * 64, X, 0, 64);
